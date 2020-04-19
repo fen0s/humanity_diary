@@ -35,7 +35,7 @@ def submit_view(request):
         if form.is_valid():
             post = form.save(commit=False)
             post.save()
-            Ip(ip=ip).save()
+            Ip(ip=ip, post_id=post.pk).save()
             return redirect('detail_post', pk=post.pk)
     else:
         form = PostForm()
