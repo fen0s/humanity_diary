@@ -1,0 +1,48 @@
+{% extends 'blog/base.html' %}
+<head>
+    {% block title %}
+    <title>Humanity Diary Posts</title>
+    {% endblock %}
+  </head>
+
+<body>
+{% block content %}
+
+<div class="list-group">
+{% if posts %}
+    {% for post in posts %}
+ <a href="{%url "posts" %}/{{post.id}}" class="list-group-item list-group-item-action flex-column align-items-start">
+    <div class="d-flex w-100 justify-content-between">
+      <h4 class="mb-1" style="text-align: center">{{post.name}}</h5>
+      <small>{{post.date}}</small>
+    </div>
+    <p class="lead">{{post.post_text}}</p>
+    <small>Author: {{post.author}}</small>
+  </a>
+    {% endfor %}
+    </div>
+{% else %}
+    <p>No posts currently are posted. Go to "Submit" to submit one!</p>
+{% endif %}
+</ul>
+<ul class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <li class="page-item"><a class="page-link" href="?page=1">&laquo; First page</a></li>
+            <li class="page-item"><a class="page-link" href="{{ page_obj.previous_page_number }}">Previous page</a></li>
+        {% endif %}
+
+        <h5 class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </h5>
+
+        {% if page_obj.has_next %}
+            <li class="page-item"><a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">Last page &raquo;</a></li>
+            <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Next page</a></li>
+        {% endif %}
+    </span>
+      </ul>
+</div>
+
+{%endblock%}
+</body>

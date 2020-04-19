@@ -1,0 +1,35 @@
+{%extends 'blog/base.html'%}
+<!doctype html>
+<html lang="en">
+  <head>
+  {% block title %}
+  <title>Humanity's Diary!</title>
+  {% endblock %}
+  </head>
+  
+  <body>
+   {% block content %}
+<h2 class="display-3">Welcome to the...</h2>
+<h2 class="display-1">Humanity's Diary.</h2>
+<br></br>
+<h3>It's a blog where you can write anything you want, but only once.</h3>
+<br></br>
+<div class="container">
+<h4> Do you want to... </h4>
+ <br></br> <br></br>
+ <div class="row">
+    <div class="col-sm">
+      <h5>Submit a post?</h5>
+      <a href="{% url "submit" %}" class="btn btn-primary btn-lg rounded" role="button" aria-pressed="true">Submit</a>
+    </div>
+    <div class="col-sm">
+      <h5>Or...</h5>
+    </div>  
+    <div class="col-sm">
+      <h5>View existing posts?</h5>
+      <a href="{% url "posts" %}" class="btn btn-info btn-lg rounded" role="button" aria-pressed="true">Posts</a>
+    </div>
+  </div>
+</div>
+{% endblock %}
+</body>
