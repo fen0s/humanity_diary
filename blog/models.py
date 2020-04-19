@@ -8,7 +8,10 @@ class Post(models.Model):
     
     def __str__(self):
         return self.name 
+    
 class Ip(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
     ip = models.TextField()
+
     def __str__(self):
-        return self.ip
+        return self.ip + ' // ' + post.name
